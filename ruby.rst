@@ -1,0 +1,49 @@
+Ruby
+====
+
+.. warning::
+
+  All the following should be done as your chosen user - scheduler - not
+  as root.
+
+Ruby Version Manager (RVM)
+--------------------------
+
+In order to make sure we are using a compatible set of packages, we
+use the
+`Ruby Version Manager (RVM) <https://rvm.io>`_ to install and manage them.
+
+By using RVM, one can have multiple copies of Ruby, Rails and supporting
+packages installed on the same machine, and be sure of always using
+exactly the one intended.
+
+You will find instructions for installing RVM on the page referenced
+above, but in essence it comes down to just two commands.
+
+::
+
+  $ gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  $ \curl -sSL https://get.rvm.io | bash -s stable
+
+This incidentally is why you installed curl in the previous step.
+
+Once the installation has completed, log out and then back in again in
+order to pick up your modified environment.
+
+Ruby
+----
+
+The application currently uses Ruby version 2.1.10, which is slightly
+out of date, but not much.  It would probably work fine with any
+later one, but for now we want a fully predictable environment.
+
+To install the necessary Ruby, use the following command.  It can
+take a few minutes to complete, depending on the speed of your
+processor.
+
+::
+
+  $ rvm install ruby-2.1.10
+
+You will be prompted for your user's password (not the root
+password) in order to install extra required operating system packages.
