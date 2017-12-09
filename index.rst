@@ -22,7 +22,7 @@ a suitable hosting platform for themselves - either a dedicated
 physical machine, or some kind of virtual server.
 
 In these circumstances, the recommended operating system is
-`Debian GNU/Linux <https://www.debian.org>`_, version 9 - Stretch.
+`Debian GNU/Linux <https://www.debian.org>`_, version 8 - Jessie.
 It should be relatively straightforward to use any other version
 of Linux, or MacOS.
 
@@ -30,18 +30,7 @@ You may already have your own web application infrastructure, in which
 case you should be able to slot Scheduler into it.
 
 These instructions assume you are using a fresh, blank installation
-of Debian GNU/Linux version 9, with just the bare operating system installed.
-
-.. note::
-
-  If you are doing a fresh installation of Debian GNU/Linux onto a
-  normal PC or virtual machine, then you almost certainly want to choose
-  the "amd64" version of the installer.  This is the 64 bit version for
-  both Intel and AMD processors.  Use the "i386" version only for old
-  processors which are restricted to 32 bit.
-
-Installation images for Debian GNU/Linux are available
-`here <https://www.debian.org/distrib/netinst>`_.
+of Debian GNU/Linux version 8, with just the bare operating system installed.
 
 .. toctree::
 

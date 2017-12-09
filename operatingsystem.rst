@@ -6,7 +6,24 @@ Download
 
 Download the "Small CDs or USB sticks" image for amd64 (or i386 if you
 have only a 32-bit processor) from
-`here <https://www.debian.org/distrib/netinst>`_.
+`here <https://www.debian.org/releases/jessie/debian-installer/>`_.
+
+.. note::
+
+  If you are doing a fresh installation of Debian GNU/Linux onto a
+  normal PC or virtual machine, then you almost certainly want to choose
+  the "amd64" version of the installer.  This is the 64 bit version for
+  both Intel and AMD processors.  Use the "i386" version only for old
+  processors which are restricted to 32 bit.
+
+.. warning::
+
+  It is possible to install Scheduler on Debian GNU/Linux version 9 - Stretch,
+  but extra work is needed because of the change in that version from
+  MySQL to MariaDB.  MariaDB claims to be a drop-in replacement for
+  MySQL, but it isn't really.  It has sufficient incompatibilities to
+  make things a little tricky.  Do get in touch for advice if you
+  want to use Stretch.
 
 Install
 -------

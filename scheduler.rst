@@ -52,9 +52,61 @@ to install the rest.
 Create database
 ---------------
 
-Before you can run up the application, you need some
+Before you can run up the application, you need some databases to
+be created within MySQL/MariaDB.  A script is provided to assist
+in setting these up.  Under the scheduler directory it will be
+found as:
+
+  support/setupmysql
+
+Edit the script and you will see two environment variables to set.
+
+::
+
+  DATABASE_PREFIX="not set"
+  DATABASE_PASSWORD="not set"
+
+The prefix which you use will depend on your database, but if this
+is a new system just for running Scheduler then an obvious one to
+use would be just "scheduler".  The password is up to you - make it
+something secure.  Then run the script with
+
+::
+
+  $ support/setupmysql
+
+You will be prompted for the MySQL root password which you set up
+earlier when installing MySQL.
+
+Edit the file:
+
+  config/database.yml
+
+and set the password there to the same as you chose to put in the
+DATABASE_PASSWORD variable.
+
+You can then create the database tables and give them some initial
+sample data with the following commands.
+
+::
+
+  $ rake db:schema:load
+  $ rake db:seed
 
 
+Run it
+------
 
+And now you should be in a position to run up the application in
+demonstration mode with the following command:
 
+::
 
+  $ rails s
+
+Point a web browser to http://<your host>:3000 and you should see
+the Scheduler demonstration site.  The application is running in development
+mode with a copy of the data used on the demonstration site.
+
+You can log in as one of the two demonstration users using the menu
+at the top right.
