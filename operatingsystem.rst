@@ -1,12 +1,27 @@
 Operating System
 ================
 
+Xronos Scheduler has been tested on both the current version
+of Debian GNU/Linux (version 9 - Stretch) and on the previous
+one (version 8 - Jessie).  It's actually slightly easier to
+install it on version 8, because that version includes packages for MySQL
+by default, whilst in version 9 it has been replaced by MariaDB.
+
+MariaDB is meant to be a drop-in replacement for MySQL, but it
+has sufficient differences to render its use problematic.  For
+now, you are recommended to stick with MySQL.  Happily, MySQL
+packages are still available to suit Debian GNU/Linux version 9,
+and they're not difficult to add in.
+
+
 Download
 --------
 
 Download the "Small CDs or USB sticks" image for amd64 (or i386 if you
-have only a 32-bit processor) from
-`here <https://www.debian.org/releases/jessie/debian-installer/>`_.
+have only a 32-bit processor) for either
+`version 8 <https://www.debian.org/releases/jessie/debian-installer/>`_
+or
+`version 9 <https://www.debian.org/distrib/netinst>`_.
 
 .. note::
 
@@ -16,14 +31,6 @@ have only a 32-bit processor) from
   both Intel and AMD processors.  Use the "i386" version only for old
   processors which are restricted to 32 bit.
 
-.. warning::
-
-  It is possible to install Scheduler on Debian GNU/Linux version 9 - Stretch,
-  but extra work is needed because of the change in that version from
-  MySQL to MariaDB.  MariaDB claims to be a drop-in replacement for
-  MySQL, but it isn't really.  It has sufficient incompatibilities to
-  make things a little tricky.  Do get in touch for advice if you
-  want to use Stretch.
 
 Install
 -------
