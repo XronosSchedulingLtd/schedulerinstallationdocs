@@ -167,6 +167,6 @@ as root with the following command:
   certbot renew --post-hook "service nginx restart"
 
 Although this job runs every week, it will attempt the renewal only
-when the existing has less than 30 days of validity left.  The post-hook
-will be run only after an actual renewal.
+when the existing certificate has less than 30 days of validity left.
+The post-hook will be run only after an actual renewal.
 
