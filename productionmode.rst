@@ -100,6 +100,9 @@ contents.
         listen 80;
         server_name scheduler.myschool.org.uk;
         root /home/scheduler/Work/Coding/scheduler/public;
+        location ~ /.well-known {
+                allow all;
+        }
         passenger_enabled on;
         passenger_ruby /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby;
   }

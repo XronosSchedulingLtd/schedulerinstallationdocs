@@ -42,6 +42,7 @@ of Debian GNU/Linux, with just the bare operating system installed.
    scheduler
    nextsteps
    productionmode
+   https
 
 
 Other documents
