@@ -198,3 +198,9 @@ web browser at http://<your domain name>/
 
   This seems to cure the problem.
 
+
+Because you have now set up Scheduler to run as a service under Nginx
+and Phusion Passenger, it will all start up automatically each time
+your server is booted.  As part of the boot process, Nginx is started,
+which in turn starts Passenger, which starts up instances of Scheduler
+as needed.

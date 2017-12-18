@@ -59,7 +59,7 @@ web root.  The validation process will fail without this.
 
 Issue the following command to request a certificate.  The first
 time you use it you will be asked to agree to Let's Encrypt's terms
-and conditions.
+and conditions, and to provide a contact e-mail address for notifications.
 
 ::
 
@@ -74,7 +74,7 @@ Use the certificate
 Having got a certificate for your server, the next stage is to configure
 Nginx to make use of it.
 
-Edit the file /etc/nging/sites-available/scheduler which you created
+Edit the file /etc/nginx/sites-available/scheduler which you created
 earlier and add the following server definition, *after* the existing
 one.
 
