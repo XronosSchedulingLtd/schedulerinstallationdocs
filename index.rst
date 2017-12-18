@@ -40,6 +40,8 @@ of Debian GNU/Linux, with just the bare operating system installed.
    mysql
    nodejs
    scheduler
+   nextsteps
+   productionmode
 
 
 Other documents
