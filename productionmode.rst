@@ -52,8 +52,14 @@ and with the correct versions of Ruby and Rails.
 
 There are separate installation instructions for
 `Debian GNU/Linux 8.0 <https://www.phusionpassenger.com/library/install/nginx/install/oss/jessie/>`_ and
-`Debian GNU/Linux 9.0 <https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/>`_.  The two sets of instructions are practically identical,
-differing only in the way the APT repositories are set up.
+`Debian GNU/Linux 9.0 <https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/>`_.
+
+.. warning::
+
+The instructions are subtly different.  For Debian 8, you install Nginx and
+Phusion Passenger all in one go by following the above instructions.  For
+Debian 9, you must install nginx *first*, then follow the above instructions
+to add Phusion Passenger.
 
 Follow those instructions to get both Nginx and Passenger installed on
 your system.
