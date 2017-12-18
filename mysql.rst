@@ -5,8 +5,8 @@ Currently the application uses MySQL as its database server, so install MySQL.
 The steps needed to do this depend on whether you are using version 8
 or version 9 of Debian GNU/Linux.
 
-Version 9 - Stretch
--------------------
+Debian 9 - Stretch
+------------------
 
 A couple of extra steps are needed in order to configure your system
 to pick up actual packages for MySQL.
@@ -34,8 +34,8 @@ Now finish off your MySQL installation by following the instructions
 as for version 8.
 
 
-Version 8 - Jessie
-------------------
+Debian 8 - Jessie
+-----------------
 
 ::
 
