@@ -33,8 +33,8 @@ This incidentally is why you installed curl in the previous step.
 .. note::
 
   It is just possible that the gpg command above will fail, apparently due to
-  a compatibility problem with some DNS servers.  It's not a common
-  occurence, but it has been known to happen.  If it happens to you,
+  a compatibility problem between dirmngr and some DNS servers.  It's not a
+  common occurence, but it has been known to happen.  If it happens to you,
   there is a workaround.
 
   ::

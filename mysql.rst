@@ -29,9 +29,10 @@ and install it with:
   $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 
 Check the above web page first to see whether this is still the current
-version of the mysql-apt-config package.  When you install the package
-you will be asked what you want to install - just take the default
-option.
+version of the mysql-apt-config package.
+
+When you install this package you will be asked what MySQL packages you
+want to install - just take the default option.
 
 
 Debian 8 - Jessie
