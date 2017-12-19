@@ -6,6 +6,9 @@ Ruby
   All the following should be done as your chosen user - scheduler - not
   as root.
 
+  If you are still logged in as root (your command line prompt is a # symbol)
+  then log out now and log back in as scheduler.
+
 Ruby Version Manager (RVM)
 --------------------------
 
@@ -26,6 +29,20 @@ above, but in essence it comes down to just two commands.
   $ \curl -sSL https://get.rvm.io | bash -s stable
 
 This incidentally is why you installed curl in the previous step.
+
+.. note::
+
+  It is just possible that the gpg command above will fail, apparently due to
+  a compatibility problem with some DNS servers.  It's not a common
+  occurence, but it has been known to happen.  If it happens to you,
+  there is a workaround.
+
+  ::
+
+    $ echo "standard-resolver" >>~/.gnupg/dirmngr.conf
+    $ killall dirmngr
+
+  and then try again.
 
 Once the installation has completed, log out and then back in again in
 order to pick up your modified environment.

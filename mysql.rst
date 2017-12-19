@@ -23,15 +23,15 @@ and install it with:
 
 ::
 
+  $ wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
   $ sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
   $ sudo apt-get update
+  $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 
-Obviously, adjust the version number if you have downloaded a later version.
-This will add the MySQL repositories to your Debian installation, and
-update your index of available software.
-
-Now finish off your MySQL installation by following the instructions
-as for version 8.
+Check the above web page first to see whether this is still the current
+version of the mysql-apt-config package.  When you install the package
+you will be asked what you want to install - just take the default
+option.
 
 
 Debian 8 - Jessie
