@@ -83,7 +83,10 @@ Edit the file:
   config/database.yml
 
 and set the password there to the same as you chose to put in the
-DATABASE_PASSWORD variable.
+DATABASE_PASSWORD variable.  If you used anything other than "scheduler"
+as your database prefix, then you will need to make a corresponding
+change in this file too - scheduler_development, scheduler_production
+and scheduler_test.
 
 You can then create the database tables and give them some initial
 sample data with the following commands.
