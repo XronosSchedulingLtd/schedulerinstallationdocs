@@ -108,5 +108,18 @@ Point a web browser to http://<your host>:3000 and you should see
 the Scheduler demonstration site.  The application is running in development
 mode with a copy of the data used on the demonstration site.
 
+.. note::
+
+  As of Rails 4.2, if you invoke the server in this way it will listen
+  on only 127.0.0.1:3000, which means it can be accessed only from
+  that machine.  Assuming you're doing all this work on some kind of
+  headless server, that isn't terribly useful.  Use the following
+  command to have it listen on all interfaces:
+
+  ::
+
+    $ rails s -b 0.0.0.0
+
+
 You can log in as one of the two demonstration users using the menu
 at the top right.
