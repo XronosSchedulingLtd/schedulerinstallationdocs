@@ -41,6 +41,7 @@ of Debian GNU/Linux, with just the bare operating system installed.
    nodejs
    scheduler
    nextsteps
+   realdata
    productionmode
    https
 

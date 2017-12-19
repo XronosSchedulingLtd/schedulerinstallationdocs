@@ -48,20 +48,6 @@ package needs to be installed in order to be able to use it to install
 all the others.  Hence we manually install the bundler gem, then use it
 to install the rest.
 
-.. note::
-
-  If you are running Debian 9, one extra step is needed at this
-  point.  The gem which provides connectivity from Ruby to Mysql
-  is slightly too old and needs to be updated.  Type:
-
-  ::
-
-    $ bundle update mysql2
-
-  to get a later version.  Once testing has been completed, this
-  newer version will be added to the repository and the step won't
-  be necessary.
-
 
 Create database
 ---------------

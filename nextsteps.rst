@@ -14,6 +14,6 @@ than made up stuff.
 These two issues can be dealt with in either order - production mode
 first or data first.  It's up to you.
 
-- Setting up real data
+- Setting up :ref:`real_data`
 - Configuring :ref:`production_mode`
 
