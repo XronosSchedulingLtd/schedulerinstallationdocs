@@ -204,7 +204,7 @@ The final file would then look like this:
   5 3 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew --post-hook "service nginx restart"
 
 
-Although this job runs twice a day, it will attempt the renewal only
+Although this job runs daily, it will attempt the renewal only
 when the existing certificate has less than 30 days of validity left.
 The post-hook will be run only after an actual renewal.
 
