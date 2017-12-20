@@ -170,7 +170,8 @@ put it at the end of your user's ~/.profile file, like this:
 
 You're now ready to run up your application in production mode.
 
-Create a symbolic link to this file in /etc/nginx/sites-enabled with:
+Create a symbolic link in /etc/nginx/sites-enabled to the configuration
+file created earlier with:
 
 ::
 
