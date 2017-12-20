@@ -7,7 +7,8 @@ Ruby
   as root.
 
   If you are still logged in as root (your command line prompt is a # symbol)
-  then log out now and log back in as scheduler.
+  then log out now and log back in as scheduler.  You'll note that your
+  command line prompt changes to a $ symbol.
 
 Ruby Version Manager (RVM)
 --------------------------

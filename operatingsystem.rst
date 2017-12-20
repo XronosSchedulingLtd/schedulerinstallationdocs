@@ -79,3 +79,18 @@ These lines install the necessary packages, add the scheduler user,
 and then put that user in a couple of necessary groups.
 
 Log out as root and log back in as your chosen user.
+
+.. note::
+
+  The following instructions frequently ask you to edit a file.  To
+  do this you need some sort of text editor, and as this is a headless
+  server, it's going to need to be a text-mode one, not a graphical one.
+
+  You may have noticed that vim was installed as one of the basic packages,
+  so if you're happy with vim then do use that.  It's a very powerful
+  editor, but perhaps has a bit of a steep initial learning curve.  For
+  small edits, and if you don't already have a preference for a particular
+  editor, "nano" is an editor which is very easy to get started with.
+
+  If you'd like to learn vim, you'll find an interactive tutorial on your
+  system which can be invoked with the command "vimtutor".
