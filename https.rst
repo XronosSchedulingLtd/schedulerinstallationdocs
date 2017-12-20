@@ -172,7 +172,7 @@ As root (i.e. use sudo) edit the file /etc/cron.d/certbot and add
 
   --post-hook "service nginx restart"
   
-to the end of the command.
+to the end of the final line.
 
 You probably also want to tweak the time
 at which it is run.  The default setting is to run at midnight and noon
