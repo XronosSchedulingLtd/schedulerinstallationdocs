@@ -159,14 +159,37 @@ by typing:
   $ sudo certbot renew --dry-run
 
 This won't actually renew your certificate, but it will check that all
-is working.  Provided all is well, set up a cron job to run once a week
-as root with the following command:
+is working.
+
+The Debian certbot package sets up a cron job for you, which
+will check your certificates and attempt renewal.  It needs a slight
+tweak, because once the certificate has been renewed, we need to tell
+Nginx about it.
+
+As root (i.e. use sudo) edit the file /etc/cron.d/certbot and add
 
 ::
-  
-  certbot renew --post-hook "service nginx restart"
 
-Although this job runs every week, it will attempt the renewal only
+  --post-hook "service nginx restart"
+  
+to the end of the command.  It should then look like this:
+
+::
+
+  # /etc/cron.d/certbot: crontab entries for the certbot package
+  #
+  # Upstream recommends attempting renewal twice a day
+  #
+  # Eventually, this will be an opportunity to validate certificates
+  # haven't been revoked, etc.  Renewal will only occur if expiration
+  # is within 30 days.
+  SHELL=/bin/sh
+  PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+  0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew --post-hook "service nginx restart"
+
+
+Although this job runs twice a day, it will attempt the renewal only
 when the existing certificate has less than 30 days of validity left.
 The post-hook will be run only after an actual renewal.
 
