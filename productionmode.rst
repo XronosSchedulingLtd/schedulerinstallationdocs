@@ -139,7 +139,7 @@ the application directory and create them as follows:
 ::
 
   $ cd ~/Work/Coding/scheduler
-  $ RAILS_ENV=production bundle exec rake assets:precompile
+  $ RAILS_ENV=production rake assets:precompile
 
 The production copy uses its own separate database, which needs populating
 too.
