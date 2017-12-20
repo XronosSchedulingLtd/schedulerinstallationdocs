@@ -172,7 +172,22 @@ As root (i.e. use sudo) edit the file /etc/cron.d/certbot and add
 
   --post-hook "service nginx restart"
   
-to the end of the command.  It should then look like this:
+to the end of the command.
+
+You probably also want to tweak the time
+at which it is run.  The default setting is to run at midnight and noon
+each day, which means it is just possible that your Nginx instance will
+be re-started at noon about once every three to six months.
+
+Probably better to run it once a day, outside normal business hours.
+The time to run at is specified by the first two fields of the final
+line of the file - by default "0 \*/12", meaning 0 minutes past any
+hour divisible by 12.
+
+If I decide instead to run the job at 5 minutes past 3 each morning,
+I would change those two fields to read "5 3".
+
+The final file would then look like this:
 
 ::
 
@@ -186,7 +201,7 @@ to the end of the command.  It should then look like this:
   SHELL=/bin/sh
   PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-  0 */12 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew --post-hook "service nginx restart"
+  5 3 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew --post-hook "service nginx restart"
 
 
 Although this job runs twice a day, it will attempt the renewal only
