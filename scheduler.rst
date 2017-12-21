@@ -120,3 +120,18 @@ mode with a copy of the data used on the demonstration site.
 
 You can log in as one of the three demonstration users using the menu
 at the top right.
+
+Before you go - one last thing to set up.  All the utilities and particularly
+the cron jobs within the system need to know which version of Ruby and
+which gemset to use.  Rather than editing them all to
+specify "ruby-2.3.6@scheduler" they expect an alias to be in place.
+Do the following:
+
+::
+
+  $ rvm alias create scheduler ruby-2.3.6@scheduler
+
+
+.. warning::
+
+  Don't miss that last step.  Without it, your cron jobs will fail.
