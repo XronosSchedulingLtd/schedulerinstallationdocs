@@ -45,7 +45,7 @@ of Debian GNU/Linux version 8, with just the bare operating system installed.
 Other documents
 ---------------
 
-- `Scheduler Basic User Manual <https://xronos.uk/>`_
+- `Scheduler Basic User Guide <https://xronos.uk/>`_
 
 Scheduler is licensed under the GNU General Public Licence, version 2.
 
