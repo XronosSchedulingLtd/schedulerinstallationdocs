@@ -22,15 +22,15 @@ a suitable hosting platform for themselves - either a dedicated
 physical machine, or some kind of virtual server.
 
 In these circumstances, the recommended operating system is
-`Debian GNU/Linux <https://www.debian.org>`_, version 8 - Jessie.
+`Debian GNU/Linux <https://www.debian.org>`_.
 It should be relatively straightforward to use any other version
 of Linux, or MacOS.
 
 You may already have your own web application infrastructure, in which
 case you should be able to slot Scheduler into it.
 
-These instructions assume you are using a fresh, blank installation
-of Debian GNU/Linux version 8, with just the bare operating system installed.
+These instructions assume you are going to use a fresh, blank installation
+of Debian GNU/Linux, with just the bare operating system installed.
 
 .. toctree::
 
@@ -40,6 +40,10 @@ of Debian GNU/Linux version 8, with just the bare operating system installed.
    mysql
    nodejs
    scheduler
+   nextsteps
+   realdata
+   productionmode
+   https
 
 
 Other documents

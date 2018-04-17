@@ -6,6 +6,10 @@ Ruby
   All the following should be done as your chosen user - scheduler - not
   as root.
 
+  If you are still logged in as root (your command line prompt is a # symbol)
+  then log out now and log back in as scheduler.  You'll note that your
+  command line prompt changes to a $ symbol.
+
 Ruby Version Manager (RVM)
 --------------------------
 
@@ -27,15 +31,29 @@ above, but in essence it comes down to just two commands.
 
 This incidentally is why you installed curl in the previous step.
 
+.. note::
+
+  It is just possible that the gpg command above will fail, apparently due to
+  a compatibility problem between dirmngr and some DNS servers.  It's not a
+  common occurence, but it has been known to happen.  If it happens to you,
+  there is a workaround.
+
+  ::
+
+    $ echo "standard-resolver" >>~/.gnupg/dirmngr.conf
+    $ killall dirmngr
+
+  and then try again.
+
 Once the installation has completed, log out and then back in again in
 order to pick up your modified environment.
 
 Ruby
 ----
 
-The application currently uses Ruby version 2.1.10, which is slightly
-out of date, but not much.  It would probably work fine with any
-later one, but for now we want a fully predictable environment.
+The application currently uses Ruby version 2.3.6 - at the time of
+writing the latest point release in the 2.3 branch.  It has not yet
+been fully tested using Ruby 2.4.
 
 To install the necessary Ruby, use the following command.  It can
 take a few minutes to complete, depending on the speed of your
@@ -43,7 +61,7 @@ processor.
 
 ::
 
-  $ rvm install ruby-2.1.10
+  $ rvm install ruby-2.3.6
 
 You will be prompted for your user's password (not the root
 password) in order to install extra required operating system packages.
