@@ -15,6 +15,12 @@ for such certificates, but if not then you can get them free from the
 `Let's Encrypt <https://letsencrypt.org/>`_ project.  The following
 instructions assume you're going to use Let's Encrypt.
 
+Note that the certbot utility is still under active development, meaning
+the process of using it gets steadily easier, but it makes trying to
+write instructions for it a bit of a moving target.  Check the latest
+instructions on the
+`Certbot website <https://certbot.eff.org/>`_ if you have any difficulty.
+
 Install Certbot
 ---------------
 
@@ -56,6 +62,9 @@ It is assumed that you have set up your Nginix configuration as
 specified on the previous page.  In particular, you must have
 explicitly permitted access to the .well-known directory under your
 web root.  The validation process will fail without this.
+
+Debian 8 - Jessie
+-----------------
 
 Issue the following command to request a certificate.  The first
 time you use it you will be asked to agree to Let's Encrypt's terms
@@ -142,6 +151,22 @@ Restart Nginx again with:
 ::
 
   $ sudo service nginx restart
+
+
+Debian 9 - Stretch
+------------------
+
+The version of certbot packaged for Debian 9 is slightly more advanced
+than the one available for Debian 8.  It can do more of the work for you.
+
+The command to use is:
+
+::
+
+  $ sudo certbot --authenticator webroot --installer nginx
+
+and it seems to do pretty much all of the work specified above for
+the Jessie version.
 
 
 Automate renewals
