@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Xronos Scheduler'
-copyright = '2016-17, Xronos Scheduling Ltd'
+copyright = '2016-18, Xronos Scheduling Ltd'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
