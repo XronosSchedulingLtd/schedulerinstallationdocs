@@ -43,7 +43,11 @@ Edit the file db/seeds.rb and find the following lines
 
 ::
 
-  seeder = Seeder.new("schedulerdemo.xronos.uk")
+  seeder = Seeder.new(
+    public_title:    "Xronos Scheduler",
+    internal_title:  "Scheduler - Lorem Ipsum Academy",
+    dns_domain_name: "schedulerdemo.xronos.uk"
+  )
 
   #
   #  First, some which are intrinsic to the functioning of the system.
@@ -61,6 +65,14 @@ Edit the file db/seeds.rb and find the following lines
   #  want to load it in a new live system.
   #
   #============================================================================
+
+
+You'll probably want to change the two titles to something more suitable
+for your school.  The public one is shown to casual visitors, whilst
+the internal one is shown to users who have logged in.
+
+Typical examples might be "My School Calendar" for the public one,
+and "Scheduler - My School", for the internal one.
 
 Change "schedulerdemo.xronos.uk" to the domain name of your server,
 and then delete the final comment and everything which follows it.
