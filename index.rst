@@ -53,6 +53,7 @@ Other documents
 ---------------
 
 - `Scheduler Basic User Guide <https://xronos.uk/>`_
+- `Scheduler Advanced User Guide <https://xronos.uk/advanced/>`_
 
 Scheduler is licensed under the GNU General Public Licence, version 2.
 
