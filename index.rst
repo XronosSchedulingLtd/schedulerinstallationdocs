@@ -32,6 +32,9 @@ case you should be able to slot Scheduler into it.
 These instructions assume you are going to use a fresh, blank installation
 of Debian GNU/Linux, with just the bare operating system installed.
 
+Download this guide as a
+`PDF <https://xronos.uk/pdfs/SchedulerInstallationGuide.pdf>`_
+
 .. toctree::
 
    hardware
