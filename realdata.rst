@@ -237,13 +237,19 @@ need to log out and back in again for these to take effect.  If you're
 running in production mode then restart the server with
 "sudo service nginx restart".
 
+You need to enable a couple of APIs on the Google Developers Console in
+order for authentication to work.  These are:
+
+- Contacts API
+- Google+ API
+
+
 .. warning::
 
   It seems it can take a few minutes for your new credentials to
   propagate to Google's servers.  When you first create them, try
   waiting 5 minutes before attempting to log in to the Scheduler
   application.
-
 
 You should now be able to log in to your Scheduler installation using
 the gmail address of the staff member which you set up earlier.
