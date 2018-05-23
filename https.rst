@@ -45,7 +45,7 @@ If you're using Debian 9, then all you need to do is:
 
 ::
 
-  $ sudo apt-get install certbot
+  $ sudo apt-get install certbot python-certbot-nginx
 
 
 Request a certificate
@@ -167,6 +167,15 @@ The command to use is:
 
 and it seems to do pretty much all of the work specified above for
 the Jessie version.
+
+It will prompt you for the webroot of your application, which is (assuming
+you have followed the conventions given earlier):
+
+  /home/scheduler/Work/Coding/scheduler/public
+
+It will also ask you whether you want to restrict access to HTTPS only.
+You are strongly recommended to say yes to this query.  It will then do
+all the necessary edits to the Nginx configuration files for you.
 
 
 Automate renewals
