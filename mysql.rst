@@ -24,7 +24,7 @@ and install it with:
 ::
 
   $ wget https://dev.mysql.com/get/mysql-apt-config_0.8.9-1_all.deb
-  $ sudo dpkg -i mysql-apt-config_0.8.9-1_all.deb
+  $ sudo dpkg -i mysql-apt-config_0.8.11-1_all.deb
   $ sudo apt-get update
   $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
 
@@ -32,7 +32,9 @@ Check the above web page first to see whether this is still the current
 version of the mysql-apt-config package.
 
 When you install this package you will be asked what MySQL packages you
-want to install - just take the default option.
+want to install - make sure you install version 5.7 and not the the
+default version 8.0.  The later version introduces incompatibilities
+which will prevent the rest of the installation from running smoothly.
 
 
 Debian 8 - Jessie
