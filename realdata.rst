@@ -278,13 +278,13 @@ within the system.  For now, this is a manual process.  Proceed as follows:
   $ cd ~/Work/Coding/scheduler
   $ export RAILS_ENV=production        # Or development
   $ rails c
-  2.3.6 :001 > u = User.first
+  2.5.5 :001 > u = User.first
   ...                                  # Output suppressed
-  2.3.6 :002 > u.permissions[:admin] = true
+  2.5.5 :002 > u.permissions[:admin] = true
   ...
-  2.3.6 :003 > u.save
+  2.5.5 :003 > u.save
   ...
-  2.3.6 :004 > exit
+  2.5.5 :004 > exit
   $
 
 What you are doing here is to invoke the rails console, which gives you

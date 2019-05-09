@@ -81,11 +81,11 @@ the right version of Ruby for your instance of Scheduler.
   $ cd ~/Work/Coding/scheduler
   $ passenger-config about ruby-command
   passenger-config was invoked through the following Ruby interpreter:
-    Command: /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby
-    Version: ruby 2.3.6p384 (2017-12-14 revision 61254) [x86_64-linux]
-    To use in Apache: PassengerRuby /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby
-    To use in Nginx : passenger_ruby /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby
-    To use with Standalone: /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby /usr/bin/passenger start
+    Command: /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby
+    Version: ruby 2.5.5p157 (2017-12-14 revision 61254) [x86_64-linux]
+    To use in Apache: PassengerRuby /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby
+    To use in Nginx : passenger_ruby /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby
+    To use with Standalone: /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby /usr/bin/passenger start
 
 
   ## Notes for RVM users
@@ -110,7 +110,7 @@ contents.
                 allow all;
         }
         passenger_enabled on;
-        passenger_ruby /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby;
+        passenger_ruby /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby;
   }
 
 Note the use of the domain name and user name specified previously.

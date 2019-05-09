@@ -124,12 +124,12 @@ at the top right.
 Before you go - one last thing to set up.  All the utilities and particularly
 the cron jobs within the system need to know which version of Ruby and
 which gemset to use.  Rather than editing them all to
-specify "ruby-2.3.6@scheduler" they expect an alias to be in place.
+specify "ruby-2.5.5@scheduler" they expect an alias to be in place.
 Do the following:
 
 ::
 
-  $ rvm alias create scheduler ruby-2.3.6@scheduler
+  $ rvm alias create scheduler ruby-2.5.5@scheduler
 
 
 .. warning::

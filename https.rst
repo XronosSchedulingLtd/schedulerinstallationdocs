@@ -103,7 +103,7 @@ one.
         ssl_prefer_server_ciphers   on;
         root /home/scheduler/Work/Coding/scheduler/public;
         passenger_enabled on;
-        passenger_ruby /home/scheduler/.rvm/gems/ruby-2.3.6@scheduler/wrappers/ruby;
+        passenger_ruby /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby;
   }
 
 Then restart nginx with:
