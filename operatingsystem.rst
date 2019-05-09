@@ -43,8 +43,7 @@ as an emulated device.
 Boot your machine (or VM) with the installation image and follow
 the instructions.  At each choice, take the default offered except
 at the stage of choosing the packages to install.  At that point,
-un-tick "Debian Desktop Environment" and "Web server"
-and tick "SSH Server".  There's
+un-tick "Debian Desktop Environment" and tick "SSH Server".  There's
 no point in having a graphical desktop environment on a headless server -
 it's a waste of resources - but you will need to have an SSH server
 running in order to be able to connect to it.
