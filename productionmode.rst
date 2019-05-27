@@ -50,16 +50,14 @@ Phusion takes care of starting your application when necessary, giving
 it exactly the environment in which to run - it runs it as your user,
 and with the correct versions of Ruby and Rails.
 
-There are separate installation instructions for
-`Debian GNU/Linux 8.0 <https://www.phusionpassenger.com/library/install/nginx/install/oss/jessie/>`_ and
+Follow the installation instructions for
 `Debian GNU/Linux 9.0 <https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/>`_.
 
 .. warning::
 
-  The instructions are subtly different.  For Debian 8, you install Nginx and
-  Phusion Passenger all in one go by following the above instructions.  For
-  Debian 9, you must install nginx *first*, then follow the above instructions
-  to add Phusion Passenger.
+  Note that you install nginx from the standard Debian respository
+  *first*, then install the Phusion Passenger stuff.  This is mentioned
+  in the linked instructions, but can be overlooked.
 
 Follow those instructions to get both Nginx and Passenger installed on
 your system.

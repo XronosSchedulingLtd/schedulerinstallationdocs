@@ -25,21 +25,7 @@ Install Certbot
 ---------------
 
 The process of getting a certificate from Let's Encrypt is enabled by
-a utility called certbot.  This is included in Debian 9, but you need
-to do one extra step if you're using Debian 8.
-
-For Debian 8 only, edit /etc/apt/sources.list and add the following line:
-
-::
-
-  deb http://ftp.uk.debian.org/debian/ jessie-backports main
-
-then install certbot with the following commands:
-
-::
-
-  $ sudo apt-get update
-  $ sudo apt-get install certbot -t jessie-backports
+a utility called certbot.  This is included in Debian GNU/Linux version 9.
 
 If you're using Debian 9, then all you need to do is:
 
@@ -63,110 +49,13 @@ specified on the previous page.  In particular, you must have
 explicitly permitted access to the .well-known directory under your
 web root.  The validation process will fail without this.
 
-Debian 8 - Jessie
------------------
-
-Issue the following command to request a certificate.  The first
-time you use it you will be asked to agree to Let's Encrypt's terms
-and conditions, and to provide a contact e-mail address for notifications.
-
-::
-
-  $ sudo certbot certonly --webroot -w /home/scheduler/Work/Coding/scheduler/public -d <your server's domain name>
-
-Provided the request succeeded, certbot will save all the parameters
-to ease the renewal process later.
-
-Use the certificate
--------------------
-
-Having got a certificate for your server, the next stage is to configure
-Nginx to make use of it.
-
-Edit the file /etc/nginx/sites-available/scheduler which you created
-earlier and add the following server definition, *after* the existing
-one.
-
-::
-
-  server {
-        listen 443;
-        server_name <your server's domain name>;
-        ssl on;
-        ssl_certificate      /etc/letsencrypt/live/<your server's domain name>/fullchain.pem;
-        ssl_certificate_key  /etc/letsencrypt/live/<your server's domain name>/privkey.pem;
-
-        ssl_session_timeout  60m;
-
-        ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
-        ssl_ciphers 'EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH';
-        ssl_prefer_server_ciphers   on;
-        root /home/scheduler/Work/Coding/scheduler/public;
-        passenger_enabled on;
-        passenger_ruby /home/scheduler/.rvm/gems/ruby-2.5.5@scheduler/wrappers/ruby;
-  }
-
-Then restart nginx with:
-
-::
-
-  $ sudo service nginx restart
-
-You should now be able to access your site as https://<your server's domain name>/
-
-
-Prevent http access
--------------------
-
-Once you have https access up and running, it makes sense to have that
-as the default.  Users who type just "scheduler.myschool.org.uk" into their
-browsers should be quietly re-directed to the encrypted version.
-
-However, it is important to retain http access for Let's Encrypt, otherwise
-you won't be able to renew your certificate when it expires.
-
-Edit /etc/nginx/sites-available/scheduler again, and change the first
-server definition to:
-
-::
-
-  server {
-        listen 80;
-        server_name <your server's domain name>;
-        root /home/scheduler/Work/Coding/scheduler/public;
-        location ~ /.well-known {
-              allow all;
-        }
-        location / {
-              return 301 https://$server_name$request_uri;
-        }
-  }
-
-This tells Nginx to allow requests for the ".well-known" directory
-(which Let's Encrypt uses to validate renewal requests) but to re-direct
-any other requests to the same place on the https server.
-
-Restart Nginx again with:
-
-::
-
-  $ sudo service nginx restart
-
-
-Debian 9 - Stretch
-------------------
-
-The version of certbot packaged for Debian 9 is slightly more advanced
-than the one available for Debian 8.  It can do more of the work for you.
-
 The command to use is:
 
 ::
 
   $ sudo certbot --authenticator webroot --installer nginx
 
-and it seems to do pretty much all of the work specified above for
-the Jessie version.
+and it seems to do pretty much all of the necessary work.
 
 It will prompt you for the webroot of your application, which is (assuming
 you have followed the conventions given earlier):
