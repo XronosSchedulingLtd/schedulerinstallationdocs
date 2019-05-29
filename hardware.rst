@@ -9,7 +9,7 @@ Minimum
 -------
 - 2G RAM
 - 10G Hard disk
-- Reasonably modern CPU (e.g. 1.8GHz)
+- Reasonably modern CPU (e.g. 1.8GHz) with at least 2 cores
 
 
 Recommended
