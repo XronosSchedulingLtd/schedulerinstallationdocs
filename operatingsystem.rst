@@ -1,12 +1,14 @@
 Operating System
 ================
 
-Xronos Scheduler has been tested on both the current version
-of Debian GNU/Linux (version 9 - Stretch) and on the previous
-one (version 8 - Jessie).  It's actually slightly easier to
-install it on version 8, because that version includes packages for MySQL
-by default, whilst in version 9 it has been replaced by MariaDB.
+The recommended operating system for Xronos Scheduler is
+Debian GNU/Linux version 9 (Stretch).  It was originally
+developed on version 8 of that operating system, but that
+version is now approaching end of life and is no longer
+recommended.
 
+Xronos Scheduler uses MySQL as its database engine.  Debian GNU/Linux
+8 included MySQL, but version 9 includes MariaDB instead.
 MariaDB is meant to be a drop-in replacement for MySQL, but it
 has sufficient differences to render its use problematic.  For
 now, you are recommended to stick with MySQL.  Happily, MySQL
@@ -18,10 +20,8 @@ Download
 --------
 
 Download the "Small CDs or USB sticks" image for amd64 (or i386 if you
-have only a 32-bit processor) for either
-`version 8 <https://www.debian.org/releases/jessie/debian-installer/>`_
-or
-`version 9 <https://www.debian.org/distrib/netinst>`_.
+have only a 32-bit processor) for
+`Debian GNU/Linux version 9 <https://www.debian.org/distrib/netinst>`_.
 
 .. note::
 

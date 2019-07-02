@@ -2,14 +2,8 @@ MySQL
 =====
 
 Currently the application uses MySQL as its database server, so install MySQL.
-The steps needed to do this depend on whether you are using version 8
-or version 9 of Debian GNU/Linux.
-
-Debian 9 - Stretch
-------------------
-
-A couple of extra steps are needed in order to configure your system
-to pick up actual packages for MySQL.
+This is no longer included in Debian GNU/Linux 9 so a couple of extra
+steps are needed.
 
 .. warning::
 
@@ -32,20 +26,8 @@ Check the above web page first to see whether this is still the current
 version of the mysql-apt-config package.
 
 When you install this package you will be asked what MySQL packages you
-want to install - make sure you install version 5.7 and not the the
+want to install - make sure you install version 5.7 and not the
 default version 8.0.  The later version introduces incompatibilities
 which will prevent the rest of the installation from running smoothly.
 
-
-Debian 8 - Jessie
------------------
-
-::
-
-  $ sudo apt-get install mysql-server mysql-client libmysqlclient-dev
-
-During the installation, you will be prompted for a password for the
-MySQL root user.  Make this something different from both your user's
-password and the system root password.  Save it carefully, because you
-will need it later.
 
