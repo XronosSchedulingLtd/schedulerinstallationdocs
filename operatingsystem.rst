@@ -70,7 +70,7 @@ As root, do the following:
 
 ::
 
-  # apt-get install sudo vim curl git libicu-dev memcached dirmngr
+  # apt-get install sudo vim curl git libicu-dev memcached dirmngr libmagick++-dev
   # adduser scheduler
   # adduser scheduler sudo
   # adduser scheduler staff
