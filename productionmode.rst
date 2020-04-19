@@ -159,7 +159,9 @@ will manufacture one for you.
   $
 
 Don't use that one - it's not secret now.  Generate your own.  You need to
-put it at the end of your user's ~/.profile file, like this:
+put it in two places - at the end of your user's ~/.profile file and
+at the end of the application's ~/etc/whichsystem file.  In both cases,
+it should look like this:
 
 ::
 
