@@ -134,4 +134,5 @@ Do the following:
 
 .. warning::
 
-  Don't miss that last step.  Without it, your cron jobs will fail.
+  Don't miss that last step.  Without it, the application will fail
+  to start in production mode and your cron jobs will fail.
