@@ -27,3 +27,6 @@ the usage gets to about 4G, and then no more can be used.
 
 Multiple CPU cores can do a lot to improve response times when many people
 are using Scheduler at once.
+
+Scheduler will actually run very acceptably on a Raspberry Pi 4 (4G version)
+provided you add a USB3 SSD as the system drive.

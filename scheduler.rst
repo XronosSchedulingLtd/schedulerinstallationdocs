@@ -53,40 +53,34 @@ Create database
 ---------------
 
 Before you can run up the application, you need some databases to
-be created within MySQL/MariaDB.  A script is provided to assist
+be created within MariaDB.  A script is provided to assist
 in setting these up.  Under the scheduler directory it will be
 found as:
 
   support/setupmysql
 
-Edit the script and you will see two environment variables to set.
+Edit the script and you will see an environment variable to set.
 
 ::
 
-  DATABASE_PREFIX="not set"
   DATABASE_PASSWORD="not set"
 
-The prefix which you use will depend on your database, but if this
-is a new system just for running Scheduler then an obvious one to
-use would be just "scheduler".  The password is up to you - make it
-something secure.  Then run the script with
+The password is up to you but make it something secure.  Then run the
+script with
 
 ::
 
-  $ support/setupmysql
+  $ sudo support/setupmysql
 
-You will be prompted for the MySQL root password which you set up
-earlier when installing MySQL.
+The sudo part of this command line will prompt you for your user's
+password.
 
 Edit the file:
 
   config/database.yml
 
 and set the password there to the same as you chose to put in the
-DATABASE_PASSWORD variable.  If you used anything other than "scheduler"
-as your database prefix, then you will need to make a corresponding
-change in this file too - scheduler_development, scheduler_production
-and scheduler_test.
+DATABASE_PASSWORD variable.
 
 You can then create the database tables and give them some initial
 sample data with the following commands.

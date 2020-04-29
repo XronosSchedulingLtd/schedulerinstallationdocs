@@ -40,8 +40,6 @@ Download this guide as a
    hardware
    operatingsystem
    ruby
-   mysql
-   nodejs
    scheduler
    nextsteps
    realdata

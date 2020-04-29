@@ -48,6 +48,17 @@ This incidentally is why you installed curl in the previous step.
 Once the installation has completed, log out and then back in again in
 order to pick up your modified environment.
 
+.. note::
+
+  If you are doing all this not on a headless server but on a workstation
+  with the default Debian Gnome desktop, there's one little extra
+  wrinkle.
+
+  To get rvm to work properly you need to edit your terminal
+  preferences and under the "Command" tab, tick "Run command as a login
+  shell".  If you don't do that then rvm doesn't get to initialize itself
+  properly when you start up an interactive terminal.
+
 Ruby
 ----
 
