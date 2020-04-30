@@ -222,27 +222,32 @@ Obviously, use your own domain name and not the sample one given here.
 When you click the "Create" button, a fresh pop up window will appear
 telling you the Client ID and Client Secret for your application.
 
-Copy and save both of these, then edit them into your ~/.profile
-file as follows:
+Copy both of these into your ~/etc/authcredentials file which you
+created earlier.  By default it looks like this:
 
 ::
 
-  GOOGLE_CLIENT_ID="<your google client id>"
-  GOOGLE_CLIENT_SECRET="<your google client secret>"
-  export GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
+  GOOGLE_CLIENT_ID=""
+  GOOGLE_CLIENT_SECRET=""
 
+Put the newly acquired items between the quotation marks.
+
+To be able to pick them up when Scheduler is run from the command
+line, edit the scheduler user's ~/.profile file and add the following
+lines.
+
+::
+
+  . $HOME/etc/authcredentials
+  export GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
 
 If you're still running the application in development mode then you'll
 need to log out and back in again for these to take effect.  If you're
 running in production mode then restart the server with
 "sudo service nginx restart".
 
-You need to enable a couple of APIs on the Google Developers Console in
-order for authentication to work.  These are:
-
-- Contacts API
-- Google+ API
-
+You need to enable the "Contacts API" in the Google Developers Console
+in order for authentication to work.
 
 .. warning::
 
@@ -259,7 +264,7 @@ Administrator access
 --------------------
 
 Having logged in as your new user, you should find that you are
-recognized as a member of staff and create events etc.
+recognized as a member of staff and can create events etc.
 
 .. note::
 

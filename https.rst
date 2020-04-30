@@ -15,23 +15,17 @@ for such certificates, but if not then you can get them free from the
 `Let's Encrypt <https://letsencrypt.org/>`_ project.  The following
 instructions assume you're going to use Let's Encrypt.
 
-Note that the certbot utility is still under active development, meaning
-the process of using it gets steadily easier, but it makes trying to
-write instructions for it a bit of a moving target.  Check the latest
-instructions on the
-`Certbot website <https://certbot.eff.org/>`_ if you have any difficulty.
-
 Install Certbot
 ---------------
 
 The process of getting a certificate from Let's Encrypt is enabled by
-a utility called certbot.  This is included in Debian GNU/Linux version 9.
+a utility called certbot.  This is included in Debian GNU/Linux.
 
-If you're using Debian 9, then all you need to do is:
+To install it execute the following command:
 
 ::
 
-  $ sudo apt-get install certbot python-certbot-nginx
+  $ sudo apt install certbot python-certbot-nginx
 
 
 Request a certificate
@@ -44,90 +38,26 @@ satisfied that you are actually have control of the machine making the
 request, so their server will need to be able to contact yours to
 validate the request.
 
-It is assumed that you have set up your Nginix configuration as
-specified on the previous page.  In particular, you must have
-explicitly permitted access to the .well-known directory under your
-web root.  The validation process will fail without this.
-
 The command to use is:
 
 ::
 
-  $ sudo certbot --authenticator webroot --installer nginx
+  $ sudo certbot --nginx
 
-and it seems to do pretty much all of the necessary work.
+You will be prompted for an e-mail address (so the certificate issuing
+authority can contact you if one of your certificates hasn't been
+renewed and is about to expire) and then to accept LetsEncrypt's terms
+of service.
 
-It will prompt you for the webroot of your application, which is (assuming
-you have followed the conventions given earlier):
+The utility will work out your configured domain name from the
+Nginx configuration file which you set up earlier and then offer to
+re-direct all requests to https only.  Take this option (option 2)
+and it will modify the Nginx configuration file for your website
+as needed.
 
-  /home/scheduler/Work/Coding/scheduler/public
+Once the utility has finished you should find that any attempt to
+access http://scheduler.myschool.org.uk (or whatever your site is
+called) is automatically redirected to https://scheduler.myschool.org.uk.
 
-It will also ask you whether you want to restrict access to HTTPS only.
-You are strongly recommended to say yes to this query.  It will then do
-all the necessary edits to the Nginx configuration files for you.
-
-
-Automate renewals
------------------
-
-Let's Encrypt's certificates are valid for only 90 days, so they need
-to be renewed regularly.
-
-The certbot utility should already have saved all the necessary information
-to enable it to renew certificates.  You can test this quite easily
-by typing:
-
-::
-
-  $ sudo certbot renew --dry-run
-
-This won't actually renew your certificate, but it will check that all
-is working.
-
-The Debian certbot package sets up a cron job for you, which
-will check your certificates and attempt renewal.  It needs a slight
-tweak, because once the certificate has been renewed, we need to tell
-Nginx about it.
-
-As root (i.e. use sudo) edit the file /etc/cron.d/certbot and add
-
-::
-
-  --post-hook "service nginx restart"
-  
-to the end of the final line.
-
-You probably also want to tweak the time
-at which it is run.  The default setting is to run at midnight and noon
-each day, which means it is just possible that your Nginx instance will
-be re-started at noon about once every three to six months.
-
-Probably better to run it once a day, outside normal business hours.
-The time to run at is specified by the first two fields of the final
-line of the file - by default "0 \*/12", meaning 0 minutes past any
-hour divisible by 12.
-
-If I decide instead to run the job at 5 minutes past 3 each morning,
-I would change those two fields to read "5 3".
-
-The final file would then look like this:
-
-::
-
-  # /etc/cron.d/certbot: crontab entries for the certbot package
-  #
-  # Upstream recommends attempting renewal twice a day
-  #
-  # Eventually, this will be an opportunity to validate certificates
-  # haven't been revoked, etc.  Renewal will only occur if expiration
-  # is within 30 days.
-  SHELL=/bin/sh
-  PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-
-  5 3 * * * root test -x /usr/bin/certbot -a \! -d /run/systemd/system && perl -e 'sleep int(rand(3600))' && certbot -q renew --post-hook "service nginx restart"
-
-
-Although this job runs daily, it will attempt the renewal only
-when the existing certificate has less than 30 days of validity left.
-The post-hook will be run only after an actual renewal.
-
+The utility also sets up a background job which will automatically renew
+the certificate before it expires.

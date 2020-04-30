@@ -34,19 +34,11 @@ for it.
   $ cd Work/Coding
   $ git clone https://github.com/XronosSchedulingLtd/scheduler.git
   $ cd scheduler
-  $ gem install bundler
   $ bundle install
 
 These commands create the necessary directory structure, fetch the
 application files from Github, and then finally fetch and install
 the necessary support software.
-
-There's an interesting bootstrap problem.  All the necessary support
-packages are listed in a file called Gemfile.lock within the scheduler
-directory.  One of these support packages is called "bundler", but that
-package needs to be installed in order to be able to use it to install
-all the others.  Hence we manually install the bundler gem, then use it
-to install the rest.
 
 
 Create database
@@ -109,13 +101,46 @@ mode with a copy of the data used on the demonstration site.
 
   The "-b 0.0.0.0" bit is needed because without it the rails server
   listens only on address 127.0.0.1.  This is fine if you're running
-  your web browser on the same machine as the rails application, but fails
-  when you're setting up a headless server.
+  your web browser on the same machine as the rails application, and
+  can thus access it at http://localhost:3000 but fails
+  when you're setting up a headless server and need to access it from
+  a web browser running on a different machine.
 
 You can log in as one of the three demonstration users using the menu
 at the top right.
 
-Before you go - one last thing to set up.  All the utilities and particularly
+A little extra
+--------------
+
+You now have the application running in development mode but before you go,
+there are a few more things to set up.
+
+Credentials
+***********
+
+For security, Rails applications use some secret random strings
+to make sure that no-one can break in on the sessions between server
+and web browser.  These aren't provided as part of the Scheduler distribution
+because they need to be unique to your system.  Create them with
+the following command:
+
+::
+
+  $ EDITOR=vi rails credentials:edit
+
+(Set EDITOR to your preferred editor if it isn't vi.)
+
+As there are currently no credentials set up on your system a new
+set will be created for you and displayed in the editor.  Simply save
+the file, exit the editor and all will be set up.
+
+The credentials will be stored encrypted in a file config/credentials.yml.enc
+and the encryption key will be saved in config/master.key.
+
+Ruby environment
+****************
+
+All the utilities and particularly
 the cron jobs within the system need to know which version of Ruby and
 which gemset to use.  Rather than editing them all to
 specify "ruby-2.5.5@scheduler" they expect an alias to be in place.
@@ -126,7 +151,23 @@ Do the following:
   $ rvm alias create scheduler ruby-2.5.5@scheduler
 
 
+Environment variables
+*********************
+
+There are also a couple of files which will contain environment variables
+to aid in running the application and associated jobs.  These live in
+an etc directory under your Scheduler user's home directory.  Copy them
+as follows:
+
+::
+
+  $ mkdir ~/etc
+  $ cp support/whichsystem ~/etc
+  $ cp support/authcredentials ~/etc
+
+You will configure the contents of these files a little more later.
+
 .. warning::
 
-  Don't miss that last step.  Without it, the application will fail
+  Don't miss these steps.  Without them, the application will fail
   to start in production mode and your cron jobs will fail.
