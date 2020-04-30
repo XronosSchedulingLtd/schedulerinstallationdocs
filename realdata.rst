@@ -296,7 +296,7 @@ What you are doing here is to invoke the rails console, which gives you
 direct access to the database and the means to type in Ruby code to be
 executed immediately.
 
-The following lines:
+What you are doing here is to:
 
 - Select the first (only) user in the system
 - Give him or her admin privileges
