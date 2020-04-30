@@ -108,7 +108,10 @@ configuration for live running.  In particular, you might want to adjust
 the first setting - "workers 4" - to match the number of CPU cores in
 your system.
 
-Copy the file support/puma.service to /etc/systemd/system:
+If you have used a non-standard installation path for Scheduler then
+edit the file support/puma.service and change the WorkingDirectory,
+EnvironmentFile and ExecStart lines to match your installation.
+Then copy it to to /etc/systemd/system:
 
 ::
 
