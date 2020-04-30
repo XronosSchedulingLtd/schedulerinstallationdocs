@@ -38,6 +38,12 @@ satisfied that you are actually have control of the machine making the
 request, so their server will need to be able to contact yours to
 validate the request.
 
+Happily the whole process is pretty thoroughly automated.  You run a
+command on your server, it contacts LetsEncrypt's servers, they make
+a request back to your Nginx instance to make sure it really is you
+and then the certificate is issued.  The utility even installs it for
+you.
+
 The command to use is:
 
 ::
