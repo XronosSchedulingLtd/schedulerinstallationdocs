@@ -2,26 +2,14 @@ Operating System
 ================
 
 The recommended operating system for Xronos Scheduler is
-Debian GNU/Linux version 9 (Stretch).  It was originally
-developed on version 8 of that operating system, but that
-version is now approaching end of life and is no longer
-recommended.
-
-Xronos Scheduler uses MySQL as its database engine.  Debian GNU/Linux
-8 included MySQL, but version 9 includes MariaDB instead.
-MariaDB is meant to be a drop-in replacement for MySQL, but it
-has sufficient differences to render its use problematic.  For
-now, you are recommended to stick with MySQL.  Happily, MySQL
-packages are still available to suit Debian GNU/Linux version 9,
-and they're not difficult to add in.
-
+Debian GNU/Linux version 10 (Buster).
 
 Download
 --------
 
 Download the "Small CDs or USB sticks" image for amd64 (or i386 if you
 have only a 32-bit processor) for
-`Debian GNU/Linux version 9 <https://www.debian.org/distrib/netinst>`_.
+`Debian GNU/Linux version 10 <https://www.debian.org/distrib/netinst>`_.
 
 .. note::
 
@@ -70,13 +58,24 @@ As root, do the following:
 
 ::
 
-  # apt-get install sudo vim curl git libicu-dev memcached dirmngr libmagick++-dev
+  # apt install sudo vim curl git libicu-dev memcached dirmngr libmagick++-dev
+  # apt install nodejs npm
+  # apt install mariadb-server mariadb-client libmariadbclient-dev
   # adduser scheduler
   # adduser scheduler sudo
   # adduser scheduler staff
 
 These lines install the necessary packages, add the scheduler user,
 and then put that user in a couple of necessary groups.
+
+It's a good idea to run the command:
+
+::
+
+  # mysql_secure_installation
+
+After installing mariadb above.  Accept all the default options to tighten
+up your mariadb installation.
 
 Log out as root and log back in as your chosen user.
 
