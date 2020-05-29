@@ -62,8 +62,10 @@ order to pick up your modified environment.
 Ruby
 ----
 
-The application currently uses Ruby version 2.5.5.  The 2.6 branch
-has been released, but at the time of writing is still quite young.
+The application currently uses Ruby version 2.6.6.  Ruby 2.7 has
+been released but there are some deprecations within it which clash
+with Rails 5.  Rails 5 applications will run with Ruby 2.7, but produce
+warnings as a result of these deprecations.  
 
 To install the necessary Ruby, use the following command.  It can
 take a few minutes to complete, depending on the speed of your
@@ -71,7 +73,7 @@ processor.
 
 ::
 
-  $ rvm install ruby-2.5.5
+  $ rvm install ruby-2.6.6
 
 You will be prompted for your user's password (not the root
 password) in order to install extra required operating system packages.
