@@ -130,7 +130,7 @@ The first line tells systemd that in general you want puma to start
 when the system boots, and the second one tells it to start puma *now*.
 
 You can check that puma is running by looking in the directory
-shared/logs where you should find two log files which it has created.
+shared/log where you should find two log files which it has created.
 
 Nginx
 -----
