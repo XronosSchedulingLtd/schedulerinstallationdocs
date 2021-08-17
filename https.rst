@@ -2,9 +2,9 @@ Configure https
 ===============
 
 Having got your installation up and running using unencrypted connections,
-you probably want to go straight on and re-configure it to use https.
-Increasingly the web is moving to using encrypted connections only, and
-it's worth doing.
+you now need to configure https.  Running an unencrypted web server is
+frowned upon, and the authentication services generally won't let
+you use them for authentication if you are.
 
 Let's Encrypt
 -------------

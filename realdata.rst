@@ -21,12 +21,16 @@ Scheduler makes use of
 `OmniAuth <https://github.com/omniauth/omniauth>`_, a flexible authentication
 module with a lot of different possible methods of authentication.
 
-However, all the schools using Scheduler so far have used Google for
-their authentication, so the only option available so far is Google's oauth2.
+Currently only two of these are enabled within Scheduler - Google or
+Microsoft's Azure.
 If you need something different, do get in touch - info@xronos.uk
 
-These instructions cover how to set up your Scheduler system to use
-Google's authentication.
+Scheduler defaults to using Google but the following instructions will tell
+you how to switch this to Microsoft Azure if that's what your school uses.
+
+Note that Google (and probably Microsoft) no longer let you use their
+authentication unless you are running an https server.  It is therefore
+necessary to configure https before you can set up authentication.
 
 
 Seed data
@@ -46,7 +50,8 @@ Edit the file db/seeds.rb and find the following lines
   seeder = Seeder.new(
     public_title:    "Xronos Scheduler",
     internal_title:  "Scheduler - Lorem Ipsum Academy",
-    dns_domain_name: "schedulerdemo.xronos.uk"
+    dns_domain_name: "schedulerdemo.xronos.uk",
+    auth_type:       Setting.auth_types[:google_auth]
   )
 
   #
@@ -75,7 +80,9 @@ Typical examples might be "My School Calendar" for the public one,
 and "Scheduler - My School", for the internal one.
 
 Change "schedulerdemo.xronos.uk" to the domain name of your server,
-and then delete the final comment and everything which follows it.
+and if you are using Azure for your authentication then change ":google_auth"
+in the fourth line to ":azure_auth".  Then delete the final comment and 
+everything which follows it.
 
 If you now re-run the seeding process, you will have a completely
 blank system, ready for your data - don't do that yet.
@@ -87,9 +94,10 @@ Initial user
 You're going to need to be able to log on to your system, which means
 you need an initial user.
 
-When a user logs in using Google Auth, Scheduler checks to see whether it
-recognizes that user as a member of staff or pupil.  If it does, the
-new user gets set up with appropriate access to the system.
+When a user logs in using your chosen authentication system, Scheduler
+checks to see whether it recognizes that user (by e-mail address) as a
+member of staff or pupil.  If it does, the new user gets set up with
+appropriate access to the system.
 
 We thus need at least one staff record in the system to be able to log on.
 
@@ -110,14 +118,14 @@ The fields here are as follows:
 - Email address
 
 The crucial one is the e-mail address.  Scheduler will compare this
-with what it gets back from Google Auth, and if the two match then it
-will treat the user as a member of staff.  Obviously, use a real
-person's name and Gmail address.
+with what it gets back from your chosen authenticator, and if the two
+match then it will treat the user as a member of staff.  Obviously, use
+a real person's name and e-mail address.
 
 .. note::
 
-  If you use Google authentication then anyone with a Google account
-  can log in to your system.  Authorization however is a different
+  Whichever authenticator you choose, anyone with an account on that
+  service can log in to your system.  Authorization however is a different
   step from Authentication.  If an arbitrary individual authenticates into
   your system, they won't have a matching staff or pupil record, and
   so will be treated as a guest - they will have no more access to the
@@ -138,9 +146,11 @@ With that in place you can then re-seed the database with:
 And you'll have a nice blank database ready to use with some fundamental
 records already in place.
 
+Configure authentication
+------------------------
 
-Google Auth
------------
+Via Google
+^^^^^^^^^^
 
 To set up Google Authentication, you'll need an account with Google.  Visit
 the `Google Developers Console <https://console.developers.google.com>`_ and
@@ -206,7 +216,6 @@ Altogether, that would give you the following authorised origins:
 ::
 
   https://scheduler.myschool.org.uk
-  http://scheduler.myschool.org.uk
   http://localhost
 
 and the following authorised redirects.
@@ -214,7 +223,6 @@ and the following authorised redirects.
 ::
 
   https://scheduler.myschool.org.uk/auth/google_oauth2/callback
-  http://scheduler.myschool.org.uk/auth/google_oauth2/callback
   http://localhost/auth/google_oauth2/callback
 
 Obviously, use your own domain name and not the sample one given here.
@@ -223,28 +231,20 @@ When you click the "Create" button, a fresh pop up window will appear
 telling you the Client ID and Client Secret for your application.
 
 Copy both of these into your ~/etc/authcredentials file which you
-created earlier.  By default it looks like this:
+created earlier.  By default it contains this:
 
 ::
 
-  GOOGLE_CLIENT_ID=""
-  GOOGLE_CLIENT_SECRET=""
+  #
+  #  If you are using Google Authentication then uncomment and fill
+  #  in the three following lines.
+  #
+  #GOOGLE_CLIENT_ID=""
+  #GOOGLE_CLIENT_SECRET=""
+  #export GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
 
-Put the newly acquired items between the quotation marks.
-
-To be able to pick them up when Scheduler is run from the command
-line, edit the scheduler user's ~/.profile file and add the following
-lines.
-
-::
-
-  . $HOME/etc/authcredentials
-  export GOOGLE_CLIENT_ID GOOGLE_CLIENT_SECRET
-
-If you're still running the application in development mode then you'll
-need to log out and back in again for these to take effect.  If you're
-running in production mode then restart the server with
-"sudo service nginx restart".
+Put the newly acquired items between the quotation marks and uncomment
+the three relevant lines.
 
 You need to enable the "Contacts API" in the Google Developers Console
 in order for authentication to work.
@@ -258,6 +258,74 @@ in order for authentication to work.
 
 You should now be able to log in to your Scheduler installation using
 the gmail address of the staff member which you set up earlier.
+
+
+Via Microsoft Azure
+^^^^^^^^^^^^^^^^^^^
+
+The process for setting up authentication through Microsoft's Azure is
+much the same as for Google, although you need specify only the
+callback URL.  The callback to use is:
+
+::
+
+  https://scheduler.myschool.org.uk/auth/azure_activedirectory_v2/callback
+
+although obviously change "scheduler.myschool.org.uk" to the fully
+qualified domain name of your server.
+
+And if you want to use a development system as well:
+
+::
+
+  http://localhost:3000/auth/azure_activedirectory_v2/callback
+
+
+You need three pieces of information from your Azure instance's console:
+
+* A Client Id
+* A Client Secret
+* A Tenant Id
+
+As before, these go in the file ~/etc/authcredentials which you created
+earlier.  Look for the following lines:
+
+::
+
+   #
+   #  Similarly, if you are using Microsoft's Azure for authentication
+   #  then uncomment and fill in the following four.
+   #
+   #  Note that Microsoft have set a trap for users of the AZURE_CLIENT_SECRET.
+   #  When you create one it is shown with both an ID and a VALUE.  It's
+   #  tempting to use the ID, but what you need is the VALUE.
+   #
+   #AZURE_CLIENT_ID=""
+   #AZURE_CLIENT_SECRET=""
+   #AZURE_TENANT_ID=""
+   #export AZURE_CLIENT_ID AZURE_CLIENT_SECRET AZURE_TENANT_ID
+
+.. warning::
+
+  As noted in the comment above, when you create a Client Secret in
+  the Microsoft console, it has both an ID and a VALUE.  What you
+  want here is the VALUE.
+
+Common to both
+^^^^^^^^^^^^^^
+
+To be able to pick up the secrets when Scheduler is run from the command
+line, edit the scheduler user's ~/.profile file and add the following
+lines.
+
+::
+
+  . $HOME/etc/authcredentials
+
+If you're still running the application in development mode then you'll
+need to log out and back in again for these to take effect.  If you're
+running in production mode then restart the server with
+"sudo systemctl restart puma.service".
 
 
 Administrator access
