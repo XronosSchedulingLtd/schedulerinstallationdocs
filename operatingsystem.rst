@@ -60,7 +60,7 @@ As root, do the following:
 
   # apt install sudo vim curl git libicu-dev memcached dirmngr libmagick++-dev
   # apt install nodejs npm
-  # apt install mariadb-server mariadb-client libmariadbclient-dev
+  # apt install mariadb-server mariadb-client libmariadb-dev
   # adduser scheduler
   # adduser scheduler sudo
   # adduser scheduler staff
